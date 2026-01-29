@@ -2,7 +2,6 @@
 Training Constants Configuration
 
 This module organizes all training-related constants into clustered classes
-following the pattern from softremedy_report's shaya_general_configs.py
 
 Each class groups related constants by domain/category.
 """

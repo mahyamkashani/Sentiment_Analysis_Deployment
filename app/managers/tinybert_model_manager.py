@@ -14,8 +14,7 @@ class TinyBERTModelManager:
     - Batch processing
     - Error handling for ML operations
 
-    Following the Manager pattern from softremedy_report,
-    this class contains all business logic separated from HTTP concerns.
+    This class contains all business logic separated from HTTP concerns.
     """
 
     def __init__(self, config: InferenceConfig):

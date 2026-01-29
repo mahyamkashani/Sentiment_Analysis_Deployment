@@ -5,7 +5,7 @@ from app.api.dispatcher import api_v1_router
 Main FastAPI Application
 
 This file initializes the FastAPI app and registers routers.
-Following the pattern from softremedy_report, all routes are defined
+All routes are defined
 in the dispatcher, and this file only handles app-level configuration.
 """
 
@@ -57,7 +57,6 @@ async def startup_event():
     print("TinyBERT Inference API Starting...")
     print("=" * 60)
     print("Architecture: Dispatcher → Controller → Manager")
-    print("Similar to softremedy_report pattern")
     print("=" * 60)
 
 

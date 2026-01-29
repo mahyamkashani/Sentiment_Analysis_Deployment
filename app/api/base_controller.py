@@ -5,7 +5,6 @@ from typing import Optional, Dict, Any
 class BaseController:
     """
     Base controller class providing common utilities for all controllers.
-    Similar to SoftRemedyBaseApiController from softremedy_report.
 
     This class provides helper methods for:
     - Request data extraction

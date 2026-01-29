@@ -9,9 +9,6 @@ def put_in_envelope(func: Callable):
     """
     Decorator that wraps controller method responses in ResponseEnvelope.
 
-    Similar to the @put_in_envelope decorator from softremedy_report,
-    but adapted for FastAPI instead of Flask.
-
     Usage:
         @put_in_envelope
         def my_controller_method(self):

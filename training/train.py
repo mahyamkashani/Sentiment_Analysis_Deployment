@@ -9,8 +9,7 @@ Architecture:
     DatasetManager - Dataset loading and preprocessing
     ModelTrainer - Training orchestration
 
-Constants are organized in training_constants.py following the pattern
-from softremedy_report's shaya_general_configs.py
+Constants are organized in training_constants.py
 """
 
 import torch
@@ -47,7 +46,6 @@ class TrainingConfig:
     Configuration for model training.
 
     Uses constants from training_constants.py organized by category
-    following the pattern from softremedy_report.
 
     Attributes:
         model_name: Pretrained model name from HuggingFace

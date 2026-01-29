@@ -9,8 +9,7 @@ class TinyBERTApiController(BaseController):
     """
     Controller for TinyBERT inference endpoints.
 
-    Following the Controller pattern from softremedy_report,
-    this class handles HTTP request/response for prediction operations.
+    This class handles HTTP request/response for prediction operations.
 
     Responsibilities:
     - Extract and validate request data

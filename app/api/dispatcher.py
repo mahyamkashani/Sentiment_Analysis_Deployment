@@ -7,8 +7,7 @@ from app.config import InferenceConfig
 """
 API Dispatcher - Route Registration
 
-This file is equivalent to dispatcher_api_controller_v0.py from softremedy_report.
-It registers all API routes and connects them to controller methods.
+This file registers all API routes and connects them to controller methods.
 
 Pattern:
 1. Create FastAPI router (equivalent to Flask Blueprint)
@@ -44,7 +43,7 @@ def health_check():
     """
     Health check endpoint.
 
-    Similar to softremedy_report pattern:
+    Pattern:
     - Instantiate controller
     - Call controller method
     - Return result (controller method is decorated with @put_in_envelope)
