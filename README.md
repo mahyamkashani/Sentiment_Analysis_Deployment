@@ -1,4 +1,4 @@
-# :dolphin: TinyBERT Service - Refactored Architecture
+# :dolphin: TinyBERT Service - Based on Java Spring Architecture
 
 A sentiment analysis API built with FastAPI following the 3-layer architecture pattern.
 
