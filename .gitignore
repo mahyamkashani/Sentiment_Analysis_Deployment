@@ -1,0 +1,35 @@
+# Excluded markdown files
+COMMANDS.md
+DEPLOYMENT_STATUS.md
+DEPLOYMENT.md
+GUNICORN_GUIDE.md
+GUNICORN_STATUS.md
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+*.egg-info/
+dist/
+build/
+
+# Virtual environment
+venv/
+.venv/
+env/
+
+# IDE
+.vscode/
+.idea/
+
+# Logs
+logs/
+*.log
+
+# Model files (large)
+fine_tuned_model/
+
+# Environment variables
+.env
+.env.local
