@@ -122,5 +122,3 @@ def batch_analyze(self, data):
     # Your logic here
     return processed_results
 ```
-
-That's it! The decorator handles response wrapping automatically.

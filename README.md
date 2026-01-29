@@ -1,4 +1,4 @@
-# TinyBERT Service - Refactored Architecture
+# :dolphin: TinyBERT Service - Refactored Architecture
 
 A sentiment analysis API built with FastAPI following the 3-layer architecture pattern.
 
@@ -379,100 +379,6 @@ print(data["data"]["predictions"])
 7. **Type Safety**: Pydantic models throughout
 8. **Auto Documentation**: FastAPI generates OpenAPI docs at `/docs`
 
-## Comparison with Original tinybert_service
-
-### Original (main.py)
-
-```python
-# Everything in one file
-app = FastAPI()
-service = TinyBERTService(...)
-
-@app.post("/predict")
-def predict(req: InferenceRequest):
-    probs = service.predict(req.texts)
-    mapped = service.map_labels(probs)
-    return LabelMapResponse(predictions=mapped)
-```
-
-**Issues:**
-- Business logic mixed with HTTP handling
-- No consistent response format
-- Hard to extend
-
-### Refactored
-
-```python
-# dispatcher.py
-@api_v1_router.post("/predict")
-def predict(request: InferenceRequest):
-    controller = TinyBERTApiController(manager)
-    return controller.predict(request)
-
-# controller
-@put_in_envelope
-def predict(self, request: InferenceRequest):
-    predictions = self.manager.predict_with_labels(request.texts)
-    return {"predictions": predictions}
-
-# manager
-def predict_with_labels(self, texts):
-    probabilities = self.predict_probabilities(texts)
-    return self.map_labels(probabilities)
-```
-
-**Benefits:**
-- Clear separation of concerns
-- Consistent response format
-- Easy to extend
-
-## Testing
-
-```python
-# Test controller
-def test_predict_controller():
-    manager = Mock()
-    manager.predict_with_labels.return_value = [{"negative": 0.1, "positive": 0.9}]
-
-    controller = TinyBERTApiController(manager)
-    result = controller.predict(InferenceRequest(texts=["test"]))
-
-    assert "predictions" in result
-
-# Test API endpoint
-def test_predict_api():
-    response = client.post("/api/v1/predict", json={"texts": ["test"]})
-    assert response.status_code == 200
-    data = response.json()
-    assert data["status"] == "success"
-```
-
-## Adding New Endpoints
-
-Follow this pattern:
-
-1. **Add method to Controller**:
-```python
-@put_in_envelope
-def new_method(self, request: NewRequest):
-    result = self.manager.new_business_logic(request.data)
-    return {"result": result}
-```
-
-2. **Register route in Dispatcher**:
-```python
-@api_v1_router.post("/new_endpoint")
-def new_endpoint(request: NewRequest):
-    controller = TinyBERTApiController(manager)
-    return controller.new_method(request)
-```
-
-3. **Implement business logic in Manager**:
-```python
-def new_business_logic(self, data):
-    # Implementation here
-    return processed_data
-```
 
 ## Documentation
 
@@ -486,4 +392,4 @@ MIT License
 
 ## Author
 
-Mahya
+Mahya Kashani
