@@ -17,9 +17,9 @@ class TinyBERTModelManager:
     This class contains all business logic separated from HTTP concerns.
     """
 
-    def __init__(self, config: InferenceConfig):
+    def __init__(self, config: InferenceConfig, model_service: ModelService):
         self.config = config
-        self.model_service = ModelService()
+        self.model_service = model_service
         self.labels = ["negative", "positive"]
         self.device = config.device
 

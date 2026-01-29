@@ -2,6 +2,7 @@ from fastapi import APIRouter
 from app.schemas import InferenceRequest
 from app.api.v1.inference.tinybert_api_controller import TinyBERTApiController
 from app.managers.tinybert_model_manager import TinyBERTModelManager
+from app.services.model_service import ModelService
 from app.config import InferenceConfig
 
 """
@@ -18,10 +19,11 @@ Pattern:
 # Create router (equivalent to Flask Blueprint)
 api_v1_router = APIRouter(prefix="/api/v1", tags=["inference"])
 
-# Initialize manager as singleton
-# In production, consider using dependency injection or FastAPI dependencies
+# Initialize dependencies with proper DI
+# All dependencies are created here and injected into their consumers
 config = InferenceConfig(max_length=128, device="cpu")
-manager = TinyBERTModelManager(config)
+model_service = ModelService()
+manager = TinyBERTModelManager(config, model_service)
 
 # Initialize model on startup
 # Note: In production, this might be done in a startup event handler
@@ -78,6 +80,7 @@ def predict(request: InferenceRequest):
     """
     controller = TinyBERTApiController(manager)
     return controller.predict(request)
+
 
 
 @api_v1_router.post("/predict/top")
