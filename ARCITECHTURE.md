@@ -19,9 +19,9 @@ flowchart TD
 
     subgraph Workers["Worker Services"]
         direction LR
-        G["Worker 1\nTinyBERT"]
-        H["Worker 2\nTinyBERT"]
-        I["Worker N\nTinyBERT"]
+        G["Worker 1 TinyBERT"]
+        H["Worker 2 TinyBERT"]
+        I["Worker N TinyBERT"]
     end
 
     subgraph Storage["Storage Layer"]
